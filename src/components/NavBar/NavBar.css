@@ -8,12 +8,13 @@ nav {
 }
 
 .logo {
-    padding: 0 20px;    
+    flex-grow: 1;    
 }
 
 .menu {
     margin: 0;
     padding: 15px 0;
+    flex-grow: 5;
 }
 
 .menu >li {
