@@ -1,0 +1,36 @@
+.quantityBlock {
+    border: 1px solid #ccc;
+    width: 200px;
+    display: flex;
+    margin: 0 auto;
+    border-radius: 2px;
+}
+
+.quantityBlock>button {
+    flex-grow: 1;
+    background: none;
+    border: none;
+    padding: 5px;
+    color: #2a3c79;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.quantityBlock>span {
+    flex-grow: 10;
+    font-size: 14px;
+    padding: 5px;
+}
+
+.addButton {
+    color: #2a3c79;
+    border: 1px solid #2a3c79;
+    border-radius: 2px;
+    margin-top: 10px;
+    background: none;
+    padding: 5px;
+    width: 200px;
+    cursor: pointer;
+}
+
+
