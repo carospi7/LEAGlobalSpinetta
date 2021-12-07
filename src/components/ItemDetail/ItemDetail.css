@@ -1,0 +1,87 @@
+h2, h3 {
+    color: #009ee2;
+}
+
+.itemDetail {
+    max-width: 1080px;
+    margin: 50px auto;
+    border-top: 1px solid #ccc;
+    padding-top: 50px;
+    text-align: left;
+}
+
+.flexColumn {
+    display: flex;
+    justify-content: space-between;
+    text-align: left;
+    margin-bottom: 50px;
+}
+
+.column {
+    width: 49%;
+}
+
+.column > img {
+    width: 100% ;
+}
+
+.date {
+    background: rgba(42, 60, 121, 0.9);
+    padding: 8px;
+    color: white;
+    font-size: 14px;
+    text-transform: uppercase;
+    display: inline-block;
+}
+
+.listFeatures {
+    padding: 0;
+    margin-top: 20px;
+}
+
+.listFeatures > li {
+    display: inline-block;
+    padding: 0;
+    margin-right: 15px;
+    font-size: 14px;
+}
+
+.listFeatures > li > span {
+    font-weight: bold;
+}
+
+.price {
+    color: #f17811;
+    font-size: 22px;
+    font-weight: bold;
+    margin: 50px 0;
+}
+
+.description {
+    font-size: 14px;
+}
+
+.tutors {
+    padding: 0;
+    margin-top: 50px;
+}
+
+.tutors > li {
+    display: inline-block;
+    margin-right: 30px;
+    color: #2A3C79;
+    font-weight: bold;
+}
+
+.tutors > li > span {
+    display: block;
+    color: rgb(82, 82, 82);
+    font-weight: normal;
+}
+
+.tutors > li > img {
+    width: 100px;
+    border-radius: 100px;
+    display: block;
+    margin-bottom: 10px;
+}
