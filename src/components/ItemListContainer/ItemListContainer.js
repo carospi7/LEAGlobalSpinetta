@@ -1,19 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import './ItemListContainer.css';
 import ItemList from '../ItemList/ItemList';
-import { getItems } from '../../utilities/utilities';
+import { getItems, getProductsByCategory } from '../../utilities/utilities';
+import { useParams } from 'react-router-dom';
 
 const ItemListContainer = ({ greeting }) => {
 
     const [listItems, setListItems] = useState([]);
+    const { id } = useParams();
 
     useEffect(() => {
-        const list = getItems()
+        const list =  id ? getProductsByCategory(id) : getItems()
 
         list.then(response => {
             setListItems(response)
         })
-    }, [])
+    }, [id])
 
     return (
         <>

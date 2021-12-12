@@ -2,5 +2,5 @@
     max-width: 1080px;
     display: flex;
     margin: 50px auto;
-    justify-content: space-between;
+    justify-content: space-evenly;
 }

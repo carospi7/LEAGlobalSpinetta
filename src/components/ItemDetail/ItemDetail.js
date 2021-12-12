@@ -11,7 +11,7 @@ const ItemDetail = ({ item }) => {
         <article className='itemDetail'>
             <div className='flexColumn'>
                 <div className='column'>
-                    <img src={ item.pictureUrl }/>
+                    <img src={ item.pictureUrl } alt={ item.title }/>
                 </div>
                 <div className='column'>
                     <div className='date'>{ item.date }</div>
@@ -30,10 +30,10 @@ const ItemDetail = ({ item }) => {
             </div>
             <ul className='tutors'>
             <h3>Tutores</h3>
-            { item.tutors.map((tutor) => {
+            { item.tutors?.map((tutor) => {
                     return(
                         <li key={ tutor.name }>
-                            <img src={ tutor.pictureUrl }/>
+                            <img src={ tutor.pictureUrl } alt={ tutor.name }/>
                             { tutor.name }
                             <span>{ tutor.profession }</span>
                         </li>
