@@ -3,7 +3,7 @@ import './ItemCount.css';
 
 const ItemCount = ({ stock, initial, onAdd }) => {
 
-    const [ count, setCount] = useState(initial)
+    const [count, setCount] = useState(initial)
 
     const handleCountAdd = () => {
         setCount(count < stock ? count + 1 : stock)

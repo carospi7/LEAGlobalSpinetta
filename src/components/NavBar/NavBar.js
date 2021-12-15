@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 const NavBar = () => {
     return (
         <nav>
-            <div className='logo'><img src={ Logo } width={ '50px' } alt='LEA Global' /></div>
+            <Link to={'/'} className='logo'><img src={ Logo } width={ '50px' } alt='LEA Global' /></Link>
             <ul className='menu'>
                 <li><Link to={'/'}>Inicio</Link></li>
                 <li><Link to={'/category/presencial'}>Capacitaciones presenciales</Link></li>
