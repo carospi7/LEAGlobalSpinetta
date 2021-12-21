@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './NavBar.css';
 import Logo from './assets/logo-lea.png'
 import CartWidget from '../CartWidget/CartWidget';
-import { Link } from 'react-router-dom'; 
+import { Link } from 'react-router-dom';
+import { CartContext } from '../../context/cartContext';
 
 const NavBar = () => {
+
+    const { totalQuantity } = useContext(CartContext)
+
     return (
         <nav>
             <Link to={'/'} className='logo'><img src={ Logo } width={ '50px' } alt='LEA Global' /></Link>
@@ -13,7 +17,7 @@ const NavBar = () => {
                 <li><Link to={'/category/presencial'}>Capacitaciones presenciales</Link></li>
                 <li><Link to={'/category/online'}>Capacitaciones a distancia</Link></li>
             </ul>
-            <CartWidget items={ 7 } />
+            <CartWidget items={ totalQuantity } />
         </nav>
     )
 }
