@@ -1,0 +1,92 @@
+.cartList {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.cartList > table {
+    border: 1px solid #ccc;
+    width: 100%;
+    font-size: 16px;
+}
+
+.cartList .productTitle {
+    text-align: left;
+}
+
+.cartList img {
+    width: 70px;
+    height: fit-content;
+    flex-grow: 0;
+    padding: 10px;
+}
+
+.cartList table h3 {
+    margin: 0;
+    text-align: left;
+    color: #191970;
+    font-size: 16px;
+}
+
+.cartEmpty {
+    margin-top: 50px;
+}
+
+.cartEmpty > span {
+    display: block;
+    margin-bottom: 50px;
+}
+
+.cartEmpty a {
+    color: white;
+    border-radius: 2px;
+    margin-top: 10px;
+    background: none;
+    padding: 10px;
+    cursor: pointer;
+    background: #f17811;
+    border: none;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.cartList .btnClear {
+    color: rgb(107, 107, 107);
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    margin: 0 auto;
+    background: none;
+}
+
+.cartList .total {
+    padding: 20px;
+    width: fit-content;
+    margin: 50px auto;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.cartList .total span {
+    display: block;
+    color: #f17811;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.cartList .total button {
+    display: block;
+    background: #f17811;
+    width: max-content;
+    margin: 15px auto 10px auto;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: white;
+    font-size: 14px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+}

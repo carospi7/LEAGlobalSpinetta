@@ -7,7 +7,7 @@ import { CartContext } from '../../context/cartContext';
 
 const NavBar = () => {
 
-    const { totalQuantity } = useContext(CartContext)
+    const { totalQuantity } = useContext(CartContext);
 
     return (
         <nav>
@@ -17,7 +17,7 @@ const NavBar = () => {
                 <li><Link to={'/category/presencial'}>Capacitaciones presenciales</Link></li>
                 <li><Link to={'/category/online'}>Capacitaciones a distancia</Link></li>
             </ul>
-            <CartWidget items={ totalQuantity } />
+            <CartWidget items={ totalQuantity ? totalQuantity : 'No hay items' } />
         </nav>
     )
 }
