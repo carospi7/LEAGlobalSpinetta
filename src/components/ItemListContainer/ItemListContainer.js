@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import './ItemListContainer.css';
 import ItemList from '../ItemList/ItemList';
-import { getItems, getProductsByCategory } from '../../utilities/utilities';
 import { useParams } from 'react-router-dom';
+import { collection, getDocs, query, where } from 'firebase/firestore';
+import { db } from '../../services/firebase/firebase';
 
 const ItemListContainer = ({ greeting }) => {
 
@@ -10,11 +11,21 @@ const ItemListContainer = ({ greeting }) => {
     const { id } = useParams();
 
     useEffect(() => {
-        const list =  id ? getProductsByCategory(id) : getItems()
-
-        list.then(response => {
-            setListItems(response)
-        })
+        if(!id){
+            getDocs(collection(db, 'items')).then((querySnapshot) => {
+                const products = querySnapshot.docs.map( doc => {
+                    return { id: doc.id, ...doc.data() }
+                })
+                setListItems(products)
+            })
+        } else {
+            getDocs(query(collection(db, 'items'), where('category', '==', id))).then((querySnapshot) => {
+                const products = querySnapshot.docs.map( doc => {
+                    return { id: doc.id, ...doc.data() }
+                })
+                setListItems(products)
+            })
+        } 
     }, [id])
 
     return (
