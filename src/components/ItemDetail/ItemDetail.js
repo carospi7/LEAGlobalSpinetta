@@ -30,7 +30,7 @@ const ItemDetail = ({ item }) => {
                     </ul>
                     <div className='price'>{ item.price }</div>
                     { countItems === 0 ? 
-                        <ItemCount stock={ 5 } initial={ 1 } onAdd={ onAdd }/>
+                        <ItemCount stock={ item.stock } initial={ 1 } onAdd={ onAdd }/>
                         :
                         <Link to={'/cart'} className='checkoutButton'>Terminar compra</Link>
                     }
