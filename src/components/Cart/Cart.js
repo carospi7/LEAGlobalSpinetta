@@ -6,12 +6,11 @@ import { db } from '../../services/firebase/firebase';
 import { addDoc, collection, Timestamp, doc, writeBatch, getDoc, DocumentSnapshot } from 'firebase/firestore';
 
 const Cart = () => {
-    // armar form para setear info distinta y pasarle contact.phone y etc a objOrder
-    // const [contact, setContact] = useState({
-    //     phone: '1134459987',
-    //     address: 'mi direccion',
-    //     comment: 'es mi comentario'
-    // })
+    const [buyer, setBuyer] = useState({
+        name: '',
+        phone: '',
+        email: ''
+    })
     const { cartProducts, removeItem } = useContext(CartContext);
 
     // podria estar en el cart context
@@ -23,8 +22,15 @@ const Cart = () => {
         return total;
     }
 
-    const confirmOrder = () => {
-        console.log('orden confirmada')
+    const handleChange = (e) => {
+        setBuyer({
+            ...buyer,
+            [e.target.name]: e.target.value,
+        })
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
 
         const objOrder = {
             items: {
@@ -32,11 +38,7 @@ const Cart = () => {
                 date: Timestamp.fromDate(new Date()),
                 total: finalPrice()
             },
-            buyer: {
-                name: 'Carolina',
-                phone: '11223334433',
-                email: 'carol@gmail.com'
-            }
+            buyer
         }
 
         const batch = writeBatch(db);
@@ -48,8 +50,10 @@ const Cart = () => {
                     batch.update(doc(db, 'items', documentSnapshot.id), {
                         stock: documentSnapshot.data().stock - product.quantity
                     })
+                    console.log('hay stock')
                 } else {
                     outOfStock.push({ id: documentSnapshot.id, ...documentSnapshot.data()})
+                    console.log('no hay stock')
                 }
             })
         })
@@ -61,6 +65,8 @@ const Cart = () => {
                 })  
             })
         }
+
+
         //ejemplo de update
         // updateDoc(doc(db, 'orders', '2rTh1H1cudhxfqCEbvBR'), { total: 1000 })
     }
@@ -101,7 +107,13 @@ const Cart = () => {
                     }
                 </tbody>
             </table>
-            <div className='total'>Importe final <span>{ finalPrice() } USD</span><button onClick={() => confirmOrder()}>Finalizar compra</button></div>
+            <div className='total'>Importe final <span>{ finalPrice() } USD</span></div>
+            <form className="userData" onSubmit={ handleSubmit }>
+                <label>Nombre<input type="text" name="name" onChange={ handleChange }/></label>
+                <label>Teléfono<input type="text" name="phone" onChange={ handleChange }/></label>
+                <label>Email<input type="email" name="email" onChange={ handleChange }/></label>
+                <input type="submit" value="Finalizar compra" className='btnFinish'/>
+            </form>
         </div>
     )
 }

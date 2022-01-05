@@ -65,7 +65,7 @@
 .cartList .total {
     padding: 20px;
     width: fit-content;
-    margin: 50px auto;
+    margin: 50px auto 25px auto;
     font-size: 25px;
     font-weight: bold;
 }
@@ -77,11 +77,31 @@
     margin-top: 20px;
 }
 
-.cartList .total button {
+form.userData {
+    display: flex;
+    margin: 0 auto;
+    text-align: center;
+    flex-direction: column;
+}
+
+form.userData label {
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+form.userData input {
+    display: block;
+    margin: 4px auto 8px auto;
+    border: 1px solid #ccc;
+    padding: 5px;
+    width: 200px;
+}
+
+form.userData .btnFinish {
     display: block;
     background: #f17811;
     width: max-content;
-    margin: 15px auto 10px auto;
+    margin: 25px auto 30px auto;
     padding: 10px 15px;
     text-decoration: none;
     color: white;
