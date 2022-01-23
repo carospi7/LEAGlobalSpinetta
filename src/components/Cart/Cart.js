@@ -3,7 +3,7 @@ import { CartContext } from '../../context/cartContext';
 import './Cart.css';
 import { Link } from 'react-router-dom';
 import { db } from '../../services/firebase/firebase';
-import { addDoc, collection, Timestamp, doc, writeBatch, getDoc, DocumentSnapshot } from 'firebase/firestore';
+import { addDoc, collection, Timestamp, doc, writeBatch, getDoc } from 'firebase/firestore';
 
 const Cart = () => {
     const [buyer, setBuyer] = useState({
@@ -13,7 +13,6 @@ const Cart = () => {
     })
     const { cartProducts, removeItem } = useContext(CartContext);
 
-    // podria estar en el cart context
     const finalPrice = () => {
         let total = 0;
         cartProducts.forEach(product => {
