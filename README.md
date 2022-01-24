@@ -11,7 +11,7 @@ El proyecto es un e-commerce de capacitaciones que ofrecemos en LEA Global. Desd
 ### `npm start`
 
 Para correr la aplicación
-[http://localhost:3000](http://localhost:3000) para ver en el navedador.
+[http://localhost:3000](http://localhost:3000) para ver en el navegador.
 
 ## Testing
 
