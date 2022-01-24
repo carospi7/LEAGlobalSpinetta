@@ -110,3 +110,21 @@ form.userData .btnFinish {
     font-weight: bold;
     cursor: pointer;
 }
+
+.cartList .btnClearCart {
+    display: block;
+    background: #dfdfdf;
+    width: max-content;
+    margin: 25px auto 80px auto;
+    padding: 10px 15px;
+    text-decoration: none;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+    border-radius: 0;
+    color: #666;
+}
+
+.notificationPositive {
+    color: #289b28;
+}

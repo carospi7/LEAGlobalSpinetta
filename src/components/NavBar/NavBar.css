@@ -33,6 +33,10 @@ nav {
     padding: 5px 0;
 }
 
+.menu >li>a.active.home {
+    border: none;
+}
+
 .menu >li>a:hover {
     color: black;
 }

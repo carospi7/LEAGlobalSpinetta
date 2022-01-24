@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import './NavBar.css';
 import Logo from './assets/logo-lea.png'
 import CartWidget from '../CartWidget/CartWidget';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { CartContext } from '../../context/cartContext';
 
 const NavBar = () => {
@@ -11,11 +11,11 @@ const NavBar = () => {
 
     return (
         <nav>
-            <Link to={'/'} className='logo'><img src={ Logo } width={ '50px' } alt='LEA Global' /></Link>
+            <NavLink to={'/'} className='logo'><img src={ Logo } width={ '50px' } alt='LEA Global' /></NavLink>
             <ul className='menu'>
-                <li><Link to={'/'}>Inicio</Link></li>
-                <li><Link to={'/category/presencial'}>Capacitaciones presenciales</Link></li>
-                <li><Link to={'/category/online'}>Capacitaciones a distancia</Link></li>
+                <li><NavLink to={'/'} className='home' activeClassName='active'>Inicio</NavLink></li>
+                <li ><NavLink to={'/category/presencial'} activeClassName='active'>Capacitaciones presenciales</NavLink></li>
+                <li><NavLink to={'/category/online'} activeClassName='active'>Capacitaciones a distancia</NavLink></li>
             </ul>
             <CartWidget items={ totalQuantity ? totalQuantity : 'No hay items' } />
         </nav>

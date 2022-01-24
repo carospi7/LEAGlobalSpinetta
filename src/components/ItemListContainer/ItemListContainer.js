@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom';
 import { collection, getDocs, query, where } from 'firebase/firestore';
 import { db } from '../../services/firebase/firebase';
 
-const ItemListContainer = ({ greeting }) => {
+const ItemListContainer = () => {
 
     const [listItems, setListItems] = useState([]);
     const { id } = useParams();
@@ -30,7 +30,7 @@ const ItemListContainer = ({ greeting }) => {
 
     return (
         <>
-            <h1>{ greeting }</h1>
+            <h1>Cursos { id === 'presencial' ? 'presenciales' : 'a distancia'}</h1>
             <ItemList items={ listItems }/>
         </>
     )

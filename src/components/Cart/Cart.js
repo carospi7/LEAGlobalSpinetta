@@ -11,7 +11,12 @@ const Cart = () => {
         phone: '',
         email: ''
     })
-    const { cartProducts, removeItem } = useContext(CartContext);
+    const [notification, setNotification] = useState(false);
+    const [inputName, setInputName] = useState('');
+    const [inputPhone, setInputPhone] = useState('');
+    const [inputEmail, setInputEmail] = useState('');
+
+    const { cartProducts, removeItem, clearCart } = useContext(CartContext);
 
     const finalPrice = () => {
         let total = 0;
@@ -26,6 +31,13 @@ const Cart = () => {
             ...buyer,
             [e.target.name]: e.target.value,
         })
+        if (e.target.name === 'name'){
+            setInputName(e.target.value)
+        } else if(e.target.name === 'phone') {
+            setInputPhone(e.target.value)
+        } else if(e.target.name === 'email'){
+            setInputEmail(e.target.value)
+        }
     }
 
     const handleSubmit = (e) => {
@@ -60,14 +72,14 @@ const Cart = () => {
         if (outOfStock.length === 0){
             addDoc(collection(db, 'orders'), objOrder).then(({id}) => {
                 batch.commit().then(() => {
-                    console.log('Se generó la orden correctamente, el id es ' + id)
+                    console.log('Se generó la orden correctamente, el id es ' + id);
+                    setNotification(true)
+                    setInputName('');
+                    setInputPhone('');
+                    setInputEmail('');
                 })  
             })
         }
-
-
-        //ejemplo de update
-        // updateDoc(doc(db, 'orders', '2rTh1H1cudhxfqCEbvBR'), { total: 1000 })
     }
 
     return(
@@ -108,11 +120,17 @@ const Cart = () => {
             </table>
             <div className='total'>Importe final <span>{ finalPrice() } USD</span></div>
             <form className="userData" onSubmit={ handleSubmit }>
-                <label>Nombre<input type="text" name="name" onChange={ handleChange }/></label>
-                <label>Teléfono<input type="text" name="phone" onChange={ handleChange }/></label>
-                <label>Email<input type="email" name="email" onChange={ handleChange }/></label>
+                <label>Nombre<input type="text" name="name" value={inputName} onChange={ handleChange }/></label>
+                <label>Teléfono<input type="text" name="phone" value={inputPhone} onChange={ handleChange }/></label>
+                <label>Email<input type="email" name="email" value={inputEmail} onChange={ handleChange }/></label>
                 <input type="submit" value="Finalizar compra" className='btnFinish'/>
             </form>
+            { notification &&
+                <>
+                    <h4 className='notificationPositive'>Se ha generado la orden correctamente</h4>
+                    <button className='btnClearCart' onClick={ () => clearCart() }>Vaciar carrito</button>
+                </>
+            }
         </div>
     )
 }

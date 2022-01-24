@@ -18,11 +18,11 @@ function App() {
           <Switch>
             <>
             <main>
-              <Route exact path='/'>
+              <Route exact strict path='/'>
                 <ItemListContainer greeting='Bienvenidos a la tienda de LEA Global'/>
               </Route>
               <Route exact path='/category/:id'>
-                <ItemListContainer greeting='Por categoría'/>
+                <ItemListContainer/>
               </Route>
               <Route exact path='/detail/:id'>
                 <ItemDetailContainer/>
