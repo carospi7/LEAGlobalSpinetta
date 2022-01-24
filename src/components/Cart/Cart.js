@@ -61,10 +61,8 @@ const Cart = () => {
                     batch.update(doc(db, 'items', documentSnapshot.id), {
                         stock: documentSnapshot.data().stock - product.quantity
                     })
-                    console.log('hay stock')
                 } else {
                     outOfStock.push({ id: documentSnapshot.id, ...documentSnapshot.data()})
-                    console.log('no hay stock')
                 }
             })
         })
@@ -72,7 +70,6 @@ const Cart = () => {
         if (outOfStock.length === 0){
             addDoc(collection(db, 'orders'), objOrder).then(({id}) => {
                 batch.commit().then(() => {
-                    console.log('Se generó la orden correctamente, el id es ' + id);
                     setNotification(true)
                     setInputName('');
                     setInputPhone('');

@@ -10,7 +10,6 @@ const ItemDetail = ({ item }) => {
     const [countItems, setCountItems] = useState(0);
 
     const onAdd = (count) => {
-        console.log(`Se agregaron ${count} items al carrito`)
         setCountItems(count);
         setProduct(item, count);
     }
