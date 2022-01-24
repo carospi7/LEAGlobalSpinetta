@@ -12,36 +12,39 @@ export const CartContextProvider = ({ children }) => {
 
         if (productExist) {
             let repeatedProduct = cartProducts.find(element => element.item.id === product.id)
-            repeatedProduct.quantity += quantity;
+            setTotalQuantity(repeatedProduct.quantity += quantity);
             
             let newCartProducts = cartProducts.filter(element => element.item.id !== product.id)
             setCartProducts([...newCartProducts, repeatedProduct]);
         } else {
             setCartProducts([...cartProducts, {item: product, quantity: quantity}])
+            cartProducts.length === 0 ? setTotalQuantity(quantity) : countAllProductsQuantity(quantity)
         }
-
-        cartProducts.length >= 1 && countTotalQuantity()
     }
 
     const isInCart = (item) => {
         return cartProducts.some(product => product.item.id === item.id);
     }
 
-    const countTotalQuantity = () => {
+    const countAllProductsQuantity = (quantity) => {
         let productsQuantity = 0;
         cartProducts.forEach(product => {
-            productsQuantity += product.quantity;
+            productsQuantity = productsQuantity + product.quantity;
         })
-        setTotalQuantity(productsQuantity)
+        setTotalQuantity(productsQuantity + quantity)
     }
 
     const removeItem = (id) => {
+        const itemSelected = cartProducts.filter(product => product.item.id === id);
         const newArray = cartProducts.filter(product => product.item.id !== id)
+        const newQuantity = totalQuantity - itemSelected[0].quantity; 
         setCartProducts(newArray);
+        setTotalQuantity(newQuantity);
     }
 
     const clearCart = () => {
         setCartProducts([]);
+        setTotalQuantity(0);
     }
 
     return (
